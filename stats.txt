@@ -1,0 +1,9 @@
+--------------- array.py ---------------
+loops		time		memory			isFreeingMemory			resize
+10000000	23sec		204MB			onResize 80MB freed		on
+10000000	19.2sec		204MB			no						off
+
+--------------- linkedlist.py ---------------
+loops		time		memory			isFreeingMemory			
+10000000	24.4sec		alloc 988MB			yes (dynamically)		
+

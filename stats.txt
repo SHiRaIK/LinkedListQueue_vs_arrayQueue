@@ -1,3 +1,5 @@
+
+25.01.2021
 --------------- array.py ---------------
 loops		time		memory			isFreeingMemory			resize
 10000000	23sec		204MB			onResize 80MB freed		on
@@ -6,4 +8,23 @@ loops		time		memory			isFreeingMemory			resize
 --------------- linkedlist.py ---------------
 loops		time		memory			isFreeingMemory			
 10000000	24.4sec		alloc 988MB			yes (dynamically)		
+
+26.01.2021
+--------------- array.py ---------------
+test                                loops		time		memory			isFreeingMemory			resize
+ArrayQueue.enqueueDequeue():        10000000     5.77       204MB           no                      off
+ArrayQueue.enqueuetest():           10000000     2.50       192MB           no                      off
+ArrayQueue.dequeuetest():           10000000     3.24       202MB           no                      off
+
+ArrayQueue.enqueueDequeue():        10000000     5.83                                               on
+ArrayQueue.enqueuetest():           10000000     2.48                                               on
+ArrayQueue.dequeuetest():           10000000     3.35                                               on
+
+
+--------------- linkedlist.py ---------------
+                                loops		time		memory			isFreeingMemory			
+linkedListQueue.enqueueTest():      10000000     8.90       966MB           yes (dyn)    
+linkedListQueue.dequeuetest():      10000000     2.67       985MB           yes (dyn)    
+linkedListQueue.enqueueDequeue():   10000000    11.64       985MB           yes (dyn)    
+
 

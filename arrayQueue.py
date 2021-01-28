@@ -13,6 +13,7 @@ class QueueScript:
 
 class Queue:
     def __init__(self):
+        print("ArrayQueue created.")
         self.items = []
         self.last = 0
         self.first = 0
@@ -42,6 +43,8 @@ class Queue:
         else:
             return
 
+    def size(self):
+	    return len(self.items)
 
 def enqueueDequeue():
     size = 10000000
@@ -92,5 +95,33 @@ def dequeueTest():
     print(t2 - t1)
     return
 	
-
+'''def insert(number, queue):
+    q = Queue()
+    inserted = False
+	
+    t1 = time.time()
+	
+    last = queue.dequeue()
+    while(queue.size() > 0):
+        print(queue.size())
+        q.enqueue(queue.dequeue())
+	
+    while(q.size() > 0):
+        item = q.dequeue()
+        if(item < number < last or item > number > last): 
+            queue.enqueue(number)
+            inserted = True
+        queue.enqueue(item)
+        last = item
+	
+    t2 = time.time()
+    print("arrayQueue.insert(): ", end="")
+    print(t2 - t1)
+    return inserted
+	'''
+	
+	
+	
+	
+	
     

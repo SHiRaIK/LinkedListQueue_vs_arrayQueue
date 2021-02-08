@@ -1,4 +1,5 @@
 
+
 25.01.2021
 --------------- array.py ---------------
 loops		time		memory			isFreeingMemory			resize
@@ -8,6 +9,7 @@ loops		time		memory			isFreeingMemory			resize
 --------------- linkedlist.py ---------------
 loops		time		memory			isFreeingMemory			
 10000000	24.4sec		alloc 988MB			yes (dynamically)		
+
 
 26.01.2021
 --------------- array.py ---------------
@@ -22,9 +24,35 @@ ArrayQueue.dequeuetest():           10000000     3.35                           
 
 
 --------------- linkedlist.py ---------------
-                                loops		time		memory			isFreeingMemory			
+                                    loops		time		memory			isFreeingMemory			
 linkedListQueue.enqueueTest():      10000000     8.90       966MB           yes (dyn)    
 linkedListQueue.dequeuetest():      10000000     2.67       985MB           yes (dyn)    
 linkedListQueue.enqueueDequeue():   10000000    11.64       985MB           yes (dyn)    
+
+
+08.02.2021
+--------------- array.py ---------------
+test                                loops		time		max memory		isFreeingMemory			resize
+ArrayQueue.enqueueDequeue():        10000000     7.89       205MB           no                      off
+ArrayQueue.enqueueTest():           10000000     3.48       170MB           no                      off
+ArrayQueue.dequeueTest():           10000000     3.93       205MB           no                      off
+ArrayQueue.insertTest(5000000):     10000000    16.94       280MB           no                      off
+
+ArrayQueue.enqueueDequeue():        10000000    12.01       205MB                                   on
+ArrayQueue.enqueueTest():           10000000     3.78       170MB                                   on
+ArrayQueue.dequeueTest():           10000000    10.04       205MB                                   on
+ArrayQueue.insertTest(5000000):     10000000    25.43       280MB                                   on
+
+--------------- linkedlist.py ---------------
+                                    loops		time		max memory		isFreeingMemory			
+linkedListQueue.enqueueDequeue():   10000000    14.04       977MB           yes (dyn)
+linkedListQueue.enqueueTest():      10000000    10.02       968MB           yes (dyn)    
+linkedListQueue.dequeuetest():      10000000     3.93       1007MB          yes (dyn)    
+linkedListQueue.insertTest(5000000):10000000    19.80       1015MB          yes (dyn)    
+
+
+
+
+
 
 

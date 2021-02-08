@@ -13,14 +13,15 @@ class QueueScript:
 
 class Queue:
     def __init__(self):
-        print("ArrayQueue created.")
         self.items = []
         self.last = 0
         self.first = 0
+        self.size = 0
     
     def enqueue(self, value):
         self.items.append(value)
         self.last += 1
+        self.size += 1
     
     def dequeue(self):
         #self.__resize() # resize slows down
@@ -28,6 +29,7 @@ class Queue:
             return None
         item = self.items[self.first]
         self.first += 1
+        self.size -= 1
         return item
 
     def __resize(self):
@@ -43,8 +45,22 @@ class Queue:
         else:
             return
 
-    def size(self):
-	    return len(self.items)
+    def insert(self, number):
+        q = Queue()
+        inserted = False
+
+        last = self.dequeue()
+        while(self.size > 0):
+            q.enqueue(self.dequeue())
+
+        while(q.size > 0):
+            item = q.dequeue()
+            if(item < number < last or item > number > last): 
+                self.enqueue(number)
+                inserted = True
+            self.enqueue(item)
+            last = item
+        return inserted
 
 def enqueueDequeue():
     size = 10000000
@@ -74,7 +90,7 @@ def enqueueTest():
         q.enqueue(i)
     
     t2 = time.time()
-    print("ArrayQueue.enqueuetest(): ", end="")
+    print("ArrayQueue.enqueueTest(): ", end="")
     print(t2 - t1)
     return
 	
@@ -91,35 +107,27 @@ def dequeueTest():
         q.dequeue()
 	
     t2 = time.time()
-    print("ArrayQueue.dequeuetest(): ", end="")
+    print("ArrayQueue.dequeueTest(): ", end="")
     print(t2 - t1)
     return
 	
-'''def insert(number, queue):
+def insertTest():
+    size = 10000000
+    number = 5000000
     q = Queue()
-    inserted = False
-	
+    for i in range(size):
+        if i == number:
+            continue
+        q.enqueue(i)
+    
     t1 = time.time()
 	
-    last = queue.dequeue()
-    while(queue.size() > 0):
-        print(queue.size())
-        q.enqueue(queue.dequeue())
-	
-    while(q.size() > 0):
-        item = q.dequeue()
-        if(item < number < last or item > number > last): 
-            queue.enqueue(number)
-            inserted = True
-        queue.enqueue(item)
-        last = item
+    q.insert(number)
 	
     t2 = time.time()
-    print("arrayQueue.insert(): ", end="")
+    print("ArrayQueue.insertTest(): ", end="")
     print(t2 - t1)
-    return inserted
-	'''
-	
+    return
 	
 	
 	

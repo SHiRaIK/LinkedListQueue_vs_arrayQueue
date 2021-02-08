@@ -10,7 +10,6 @@ class Queue:
         self.last = None
         self.first = None
         self.size = 0
-        print("LinkedListQueue created.")
     
     def enqueue(self, value):
         item = LinkedElement(value)
@@ -28,6 +27,22 @@ class Queue:
         self.size -= 1
         return item
     
+    def insert(self, number):
+        q = Queue()
+        inserted = False
+        
+        last = self.dequeue()
+        while(self.size > 0):
+            q.enqueue(self.dequeue())
+        
+        while(q.size > 0):
+            item = q.dequeue()
+            if(item < number < last or item > number > last): 
+                self.enqueue(number)
+                inserted = True
+            self.enqueue(item)
+            last = item
+        return inserted
     
 def enqueueDequeue():
     size = 10000000
@@ -60,7 +75,6 @@ def enqueueTest():
     print(t2 - t1)
     return
 
-
 def dequeueTest():
     size = 10000000
     q = Queue()
@@ -76,31 +90,24 @@ def dequeueTest():
     print("linkedListQueue.dequeuetest(): ", end="")
     print(t2 - t1)
     return
-	
-def insert(number, queue):
+
+def insertTest():
+    size = 10000000
+    number = 5000000
     q = Queue()
-    inserted = False
-	
+    for i in range(size):
+        if i == number:
+            continue
+        q.enqueue(i)
+    
     t1 = time.time()
 	
-    last = queue.dequeue()
-    while(queue.size > 0):
-	    q.enqueue(queue.dequeue())
-	
-    while(q.size > 0):
-        item = q.dequeue()
-        if(item < number < last or item > number > last): 
-            queue.enqueue(number)
-            inserted = True
-        queue.enqueue(item)
-        last = item
+    q.insert(number)
 	
     t2 = time.time()
-    print("linkedListQueue.insert(): ", end="")
+    print("LinkedListQueue.insertTest(): ", end="")
     print(t2 - t1)
-    return inserted
-
-
+    return
 
 
 
